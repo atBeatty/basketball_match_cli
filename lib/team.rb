@@ -19,7 +19,7 @@ class Team
         self.team.each_with_index do |player, index|
             # binding.pry
             player_name = self.team_list[index].split("-").first.chomp
-            @team_stats << "#{player_name} #{player["pts"]}"
+            @team_stats << "#{player_name} #{player["pts"].to_i}"
         end
 
     @team_stats

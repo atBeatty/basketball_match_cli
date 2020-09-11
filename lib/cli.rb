@@ -49,29 +49,39 @@ class CLI
 
     #GAME BEHAVIOR
     def self.display_game_score
-
+        message_array = ["END OF FIRST QUARTER", "END OF FIRST HALF", "END OF THIRD QUARTER", "END OF GAME"]
         #SUM UP ALL AVG POINT STATS FROM TEAM PLAYERS
-        opp_total = 0
-        @opp_team.team.each do |pl|
-        opp_total += pl["pts"]
-        end
-
+        puts "\n\nTIP OFF!"
         chosen_team_total = 0
-        @chosen_team.team.each do |pl|
-        chosen_team_total += pl["pts"]
+        opp_total = 0
+
+        message_array.each do |message|
+            sleep(3)
+            @opp_team.team.each do |pl|
+            opp_total += pl["pts"]
+            end
+
+            @chosen_team.team.each do |pl|
+            chosen_team_total += pl["pts"] + rand(-5..5)
+
+            end
+
+            sleep(2)
+            puts "\nyour team: #{chosen_team_total.to_int}\n\n"
+            puts "opponents team: #{opp_total.to_int}\n\n"
+            puts message
+
         end
-
-
-    puts "\n\nYOUR TEAM: #{chosen_team_total.to_int}\n\n"
-    puts "OPPONENTS TEAM: #{opp_total.to_int}\n\n"
     end
 
     def self.game_breakdown
+
+        puts "Here is the game's breakdown by player.\n\n"
+        puts @chosen_team.team_stats
+
+        puts "****************\n\n"
         puts @opp_team.team_stats
-        binding.pry
-        @opp_team.team.each do |player|
-            puts player["pts"]
-        end
+        
 
 
     end
@@ -89,6 +99,26 @@ class CLI
 
 
 
+    def self.play_basketball
+       
+            puts "                                  (( )"
+            sleep(0.5)
+            puts "                         (( )"
+            sleep(0.5)
+
+            puts "                 (( )"
+            sleep(0.5)
+            puts "          (( )"
+            sleep(0.5)
+            puts "  (( )"
+            sleep(0.5)
+            puts "|| (( )"
+            sleep(0.5)
+            puts "||__(( )___"
+
+            puts "      (( )"
+
+    end
 
 
 end
