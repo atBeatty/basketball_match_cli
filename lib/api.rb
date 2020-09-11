@@ -1,6 +1,6 @@
 # puts "Hello"
 
-require_relative './roster.rb'
+require_relative './team.rb'
 
 
 class API

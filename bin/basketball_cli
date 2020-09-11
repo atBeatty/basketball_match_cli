@@ -4,7 +4,7 @@ require 'net/http'
 require 'json'
 
 require_relative '../lib/api.rb'
-require_relative '../lib/roster.rb'
+require_relative '../lib/team.rb'
 require_relative '../lib/cli.rb'
 
 
@@ -12,13 +12,14 @@ puts "Welcome to tonight's pickup basketball game."
 puts "Please select which team you want to run the court with."
 
 
-user_team = Roster.new
 
-user_team.team_list
-# opp_team.team_list
+CLI.run
+CLI.display_teams
+CLI.display_opponent
 
-# puts new_team
-user_team.team_stats
 
-# opp_team.team_list
 
+sleep(4)
+
+CLI.display_game_score
+CLI.game_breakdown
