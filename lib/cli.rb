@@ -4,11 +4,14 @@ require_relative './roster.rb'
 
 
 class CLI
-    def initialize
-        
-    end
+   
+
+
+    # methods that use Roster to display roster.attrs 
 
     
+
+
 
 
 
