@@ -12,15 +12,5 @@ puts "Welcome to tonight's pickup basketball game."
 puts "Please select which team you want to run the court with."
 
 # CLI.play_basketball
+CLI.call
 
-CLI.run
-CLI.display_teams
-CLI.display_opponent
-
-
-
-sleep(4)
-
-CLI.display_game_score
-
-CLI.game_breakdown

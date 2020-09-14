@@ -22,8 +22,8 @@ class API
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         json_response = JSON.parse(response.body) #data hash
+        
         return json_response["data"] #THIS DIDNT WORK WITHOUT THE RETURNq
-
     end
 
 end

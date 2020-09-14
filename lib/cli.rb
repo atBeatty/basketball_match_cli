@@ -4,6 +4,14 @@ require_relative './team.rb'
 
 
 class CLI
+    def self.call
+        self.run
+        self.display_teams
+        self.display_opponent
+        sleep(4)
+        self.display_game_score
+        self.game_breakdown
+    end
 
 
     def self.run
@@ -43,6 +51,20 @@ class CLI
 
         puts "\n\nYour opponent in tonight's game is:\n\n"
         puts @opp_team.team_list
+
+        puts "Are you okay with your team and matchup? y/n"
+        input = gets.chomp
+
+        if input != "y" && input != "n"
+            puts "Please input y/n."
+            input = gets.chomp
+        elsif input == "n"
+            self.call
+
+        end
+        
+
+
     end
 
 
@@ -62,8 +84,8 @@ class CLI
             end
 
             @chosen_team.team.each do |pl|
-            chosen_team_total += pl["pts"] + rand(-5..5)
-
+            chosen_team_total += pl["pts"]
+# create more AI functionality/variety in game results
             end
 
             sleep(2)
@@ -71,16 +93,32 @@ class CLI
             puts "opponents team: #{opp_total.to_int}\n\n"
             puts message
 
+
+
         end
     end
 
     def self.game_breakdown
 
-        puts "Here is the game's breakdown by player.\n\n"
-        puts @chosen_team.team_stats
+        puts "\n\nWould you like to see the breakdown of the game? y/n"
 
-        puts "****************\n\n"
+        input = gets.chomp
+
+        if input != "y" && input != "n"
+            puts "Please input y/n."
+            input = gets.chomp
+        end
+
+        puts "Your team's performance.\n\n"
+        puts @chosen_team.team_stats
+        binding.pry
+        
+
+        puts "\n\n***************q*\n\n"
+
+        puts "Your opponent's performance."
         puts @opp_team.team_stats
+        #display more in depth statistics from API
         
 
 
@@ -105,7 +143,6 @@ class CLI
             sleep(0.5)
             puts "                         (( )"
             sleep(0.5)
-
             puts "                 (( )"
             sleep(0.5)
             puts "          (( )"
