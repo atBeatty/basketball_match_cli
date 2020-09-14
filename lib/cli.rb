@@ -9,13 +9,14 @@ class CLI
         self.display_teams
         self.display_opponent
         sleep(4)
+        # self.play_basketball
         self.display_game_score
         self.game_breakdown
     end
 
 
     def self.run
-        puts "Welcome to the court"
+        puts "\n\nWelcome to the court\n\n"
         @user_team_1 = Team.new
         @user_team_2 = Team.new
         @opp_team = Team.new
@@ -24,11 +25,9 @@ class CLI
 
 
     def self.display_teams
-        # binding.pry
-        puts "\n\nOption 1\n\n"
+        puts "\n\nOption 1\n\n" 
         puts @user_team_1.team_list
-        
-        puts "\n\nOption 2\n\n"
+        puts "\n\nOption 2\n\n" 
         puts @user_team_2.team_list
 
         #GET INPUT FROM USER TO DECIDE TEAM  //
@@ -52,18 +51,6 @@ class CLI
         puts "\n\nYour opponent in tonight's game is:\n\n"
         puts @opp_team.team_list
 
-        puts "Are you okay with your team and matchup? y/n"
-        input = gets.chomp
-
-        if input != "y" && input != "n"
-            puts "Please input y/n."
-            input = gets.chomp
-        elsif input == "n"
-            self.call
-
-        end
-        
-
 
     end
 
@@ -71,28 +58,31 @@ class CLI
 
     #GAME BEHAVIOR
     def self.display_game_score
-        message_array = ["END OF FIRST QUARTER", "END OF FIRST HALF", "END OF THIRD QUARTER", "END OF GAME"]
-        #SUM UP ALL AVG POINT STATS FROM TEAM PLAYERS
-        puts "\n\nTIP OFF!"
         chosen_team_total = 0
         opp_total = 0
-
+        message_array = ["END OF FIRST QUARTER", 
+            "END OF FIRST HALF", 
+            "END OF THIRD QUARTER", 
+            "END OF GAME"]
+        
+        
+        puts "\n\nTIP OFF!"
         message_array.each do |message|
             sleep(3)
-            @opp_team.team.each do |pl|
-            opp_total += pl["pts"]
+            #This gets a sum of all of the player's performances for the period.
+            counter = 0
+            while counter < 5
+                opp_total += @opp_team.team[counter]["pts"]*rand
+                chosen_team_total += @chosen_team.team[counter]["pts"]*rand
+                counter +=1
             end
-
-            @chosen_team.team.each do |pl|
-            chosen_team_total += pl["pts"]
-# create more AI functionality/variety in game results
-            end
+            @opp_team.team.shuffle!
+            @chosen_team.team.shuffle!
 
             sleep(2)
-            puts "\nyour team: #{chosen_team_total.to_int}\n\n"
-            puts "opponents team: #{opp_total.to_int}\n\n"
-            puts message
 
+            puts message
+            puts "#{opp_total.to_i} to #{chosen_team_total.to_i}"
 
 
         end
@@ -100,26 +90,28 @@ class CLI
 
     def self.game_breakdown
 
-        puts "\n\nWould you like to see the breakdown of the game? y/n"
+        puts "\n\nWould you like to see the breakdown of the game? y/n\n"
 
         input = gets.chomp
 
         if input != "y" && input != "n"
             puts "Please input y/n."
             input = gets.chomp
-        end
+        elsif input == "n"
+            exit
+        else
 
         puts "Your team's performance.\n\n"
         puts @chosen_team.team_stats
-        binding.pry
         
 
-        puts "\n\n***************q*\n\n"
+        puts "\n\n****************\n\n"
 
         puts "Your opponent's performance."
         puts @opp_team.team_stats
         #display more in depth statistics from API
         
+        end
 
 
     end

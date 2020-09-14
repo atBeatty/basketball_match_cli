@@ -18,11 +18,11 @@ class API
 
     def self.get_squad
         # binding.pry
-        url = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=#{rand(300)}&player_ids[]=#{rand(400)}&player_ids[]=#{rand(400)}&player_ids[]=#{rand(400)}&player_ids[]=#{rand(400)}"
+        url = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}&player_ids[]=#{rand(345)}"
+
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         json_response = JSON.parse(response.body) #data hash
-        
         return json_response["data"] #THIS DIDNT WORK WITHOUT THE RETURNq
     end
 
