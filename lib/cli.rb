@@ -69,6 +69,7 @@ class CLI
         message_array.each do |message|
             sleep(3)
             counter = 0
+            
             while counter < 5
                 opp_total += @opp_team.team[counter]["pts"]*rand
                 
@@ -84,8 +85,8 @@ class CLI
 
             sleep(2)
 
-            puts message
-            puts "#{opp_total.to_i} to #{chosen_team_total.to_i}"
+            puts "\n#{message}"
+            puts "\nOPPONENTS SCORE: #{opp_total.to_i} to YOUR SCORE: #{chosen_team_total.to_i}"
 
 
         end
