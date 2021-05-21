@@ -13,3 +13,5 @@ This is an app that allows a user to play a basketball match. It generates semi_
 ## Contributor's Guide
     
 ## License
+
+This program is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
